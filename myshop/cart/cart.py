@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
-from myshop.shop.models import Product
+from shop.models import Product
 
 class Cart:
     def __init__(self, request):
@@ -32,7 +32,7 @@ class Cart:
         cart = self.cart.copy()
 
         for product in products:
-            cart[set(product.id)]['product'] = product
+            cart[str(product.id)]['product'] = product
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
