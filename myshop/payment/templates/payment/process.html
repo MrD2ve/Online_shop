@@ -23,9 +23,9 @@
                         {% else %}{% static 'img/no_image.png' %}{% endif %}">
                     </td>
                     <td>{{ item.product.name }}</td>
-                    <td class="num">{% item.price %}</td>
+                    <td class="num">{{ item.price }}</td>
                     <td class="num">{{ item.quantity }}</td>
-                    <td class="num">{% item.get_cost %}</td>
+                    <td class="num">{{ item.get_cost }}</td>
                 </tr>
             {% endfor %}
             <tr class="total">
