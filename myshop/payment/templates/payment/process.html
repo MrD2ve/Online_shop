@@ -16,16 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in order.item.all %}
+            {% for item in order.items.all %}
                 <tr class="row{% cycle '1' '2' %}">
                     <td>
                         <img src="{% if item.product.image %}{{ item.product.image.url }}
                         {% else %}{% static 'img/no_image.png' %}{% endif %}">
                     </td>
                     <td>{{ item.product.name }}</td>
-                    <td class="num">{{ item.price }}</td>
+                    <td class="num">${{ item.price }}</td>
                     <td class="num">{{ item.quantity }}</td>
-                    <td class="num">{{ item.get_cost }}</td>
+                    <td class="num">${{ item.get_cost }}</td>
                 </tr>
             {% endfor %}
             <tr class="total">
