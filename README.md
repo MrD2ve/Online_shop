@@ -29,7 +29,7 @@ Follow these steps to get the project running locally:
 
 
 ## 1️⃣ Clone the repository
-git clone https://github.com/your-username/django-online-shop.git
+git clone https://github.com/MrD2ve/Online_shop.git
 
 ## 2️⃣ Create and activate a virtual environment
 python -m venv env
