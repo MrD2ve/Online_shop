@@ -27,7 +27,7 @@ This project demonstrates how to build a modern, scalable online shop using Djan
 
 Follow these steps to get the project running locally:
 
-```bash
+
 # 1️⃣ Clone the repository
 git clone https://github.com/your-username/django-online-shop.git
 
@@ -74,9 +74,6 @@ celery -A myshop worker -l info
 # 🔟 Start the server (Open one more terminal)
 cd myshop
 python manage.py runserver
-
-
-```
 
 ---
 
