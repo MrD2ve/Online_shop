@@ -68,12 +68,12 @@ Create **.env** file inside **myshop** project
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
 
 # 9️⃣ Start Celery working (Open another terminal)
-cd myshop
-celery -A myshop worker -l info
+- cd myshop
+- celery -A myshop worker -l info
 
 # 🔟 Start the server (Open one more terminal)
-cd myshop
-python manage.py runserver
+- cd myshop
+- python manage.py runserver
 
 ---
 
