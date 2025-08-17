@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
+from rest_framework import viewsets
+from .serializers import CategorySerializer, ProductSerializer
+from rest_framework.permissions import IsAuthenticated
 
 def product_list(request, category_slug=None):
     category=None
@@ -31,3 +34,14 @@ def product_detail(request, id, slug):
             'cart_product_form':cart_product_form
         }
     )
+
+class ProductViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Product.objects.filter(available=True)
+    serializer_class = ProductSerializer
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

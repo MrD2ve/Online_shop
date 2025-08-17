@@ -9,6 +9,9 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 import weasyprint
+from rest_framework import viewsets
+from .serializers import OrderSerializer, OrderItemSerializer
+from rest_framework.permissions import IsAuthenticated
 
 def order_create(request):
     cart = Cart(request)
@@ -56,3 +59,14 @@ def admin_order_pdf(request, order_id):
         settings.STATIC_ROOT / 'css/pdf.css'
     )])
     return response
+
+class OrderViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class OrderItemViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
