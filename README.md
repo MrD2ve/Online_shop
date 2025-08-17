@@ -58,11 +58,11 @@ Create **.env** file inside **myshop** project
 - **STRIPE_PUBLISHABLE_KEY** - Located in the Stripe dashboard
 - **STRIPE_SECRET_KEY** - Located in the Stripe dashboard
 > **STRIPE_WEBHOOK_SECRET** - 🔽🔽🔽
->> Extract Stripe application from zip
->> Open Stripe application in terminal
->> Type **stripe login**
->> Type **stripe listen --forward-to localhost:8000/payment/webhook/**
->> Copy the Webhook Secret Key
+>- Extract Stripe application from zip
+>- Open Stripe application in terminal
+>- Type **stripe login**
+>- Type **stripe listen --forward-to localhost:8000/payment/webhook/**
+>- Copy the Webhook Secret Key
 
 # 8️⃣ Start Docker worker
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
