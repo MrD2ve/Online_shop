@@ -32,8 +32,8 @@ Follow these steps to get the project running locally:
 git clone https://github.com/MrD2ve/Online_shop.git
 
 ## 2️⃣ Create and activate a virtual environment
-python -m venv env
-source env/bin/activate  # On Windows: env\Scripts\activate
+- python -m venv env
+- source env/bin/activate  # On Windows: env\Scripts\activate
 
 ## 3️⃣ Install dependencies
 pip install -r requirements.txt
@@ -45,8 +45,8 @@ pip install -r requirements.txt
 >> [Download GTK](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
 
 ## 5️⃣ Apply database migrations
-python manage.py makemigrations
-python manage.py migrate
+- python manage.py makemigrations
+- python manage.py migrate
 
 ## 6️⃣ Create a superuser (optional)
 python manage.py createsuperuser
