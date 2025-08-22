@@ -15,11 +15,11 @@ This project demonstrates how to build a modern, scalable online shop using Djan
 - 💳 Stripe credit card payment integration  
 - 🧾 PDF invoice generation  
 - 📈 Redis-powered image view counter  
-- ⚙️ Custom context processors  
 - 📬 Asynchronous notifications via Celery  
 - 🌸 Task monitoring with Flower  
-- 🧠 Smart recommendation engine  
-- 🌍 Internationalization (i18n) support  
+- 🧠 Smart recommendation engine
+- ⚙️ RESTful API
+- 🔓 JWT authentication
 
 ---
 
@@ -27,36 +27,53 @@ This project demonstrates how to build a modern, scalable online shop using Djan
 
 Follow these steps to get the project running locally:
 
-```bash
-# 1️⃣ Clone the repository
-git clone https://github.com/your-username/django-online-shop.git
-cd django-online-shop
 
-# 2️⃣ Create and activate a virtual environment
-python -m venv env
-source env/bin/activate  # On Windows: env\Scripts\activate
+## 1️⃣ Clone the repository
+git clone https://github.com/MrD2ve/Online_shop.git
 
-# 3️⃣ Install dependencies
+## 2️⃣ Create and activate a virtual environment
+- python -m venv env
+- source env/bin/activate  # On Windows: env\Scripts\activate
+
+## 3️⃣ Install dependencies
 pip install -r requirements.txt
 
-# 4️⃣ Start Redis and RabbitMQ
-# Make sure Redis and RabbitMQ servers are running
+## 4️⃣ Install Docker Desktop, Stripe, 
+- [Download Docker](https://www.docker.com/products/docker-desktop/)
+- [Download Stripe](https://github.com/stripe/stripe-cli/releases/tag/v1.29.0)
+> If your device is Windows 🔽🔽🔽
+>> [Download GTK](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
 
-# 5️⃣ Apply database migrations
-python manage.py makemigrations
-python manage.py migrate
+## 5️⃣ Apply database migrations
+- python manage.py makemigrations
+- python manage.py migrate
 
-# 6️⃣ Create a superuser (optional)
+## 6️⃣ Create a superuser (optional)
 python manage.py createsuperuser
 
-# 7️⃣ Start Celery worker and Flower (in separate terminals)
-celery -A config worker -l info
-celery -A config flower  # Opens Flower at http://localhost:5555
+## 7️⃣ Create .env file
+Create **.env** file inside **myshop** project
+### Add keys for this sections:
+- **SECRET_KEY** - Located in the settings file on django project
+- **STRIPE_PUBLISHABLE_KEY** - Located in the Stripe dashboard
+- **STRIPE_SECRET_KEY** - Located in the Stripe dashboard
+> **STRIPE_WEBHOOK_SECRET** - 🔽🔽🔽
+>- Extract Stripe application from zip
+>- Open Stripe application in terminal
+>- Type **stripe login**
+>- Type **stripe listen --forward-to localhost:8000/payment/webhook/**
+>- Copy the Webhook Secret Key
 
-# 8️⃣ Run the development server
-python manage.py runserver
+## 8️⃣ Start Docker worker
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
 
-```
+## 9️⃣ Start Celery working (Open another terminal)
+- cd myshop
+- celery -A myshop worker -l info
+
+## 🔟 Start the server (Open one more terminal)
+- cd myshop
+- python manage.py runserver
 
 ---
 
